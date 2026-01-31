@@ -68,7 +68,7 @@ const translations = {
         'nav.contact': 'Contact',
         'nav.buy': 'Acheter',
         'hero.buy': 'Acheter le produit',
-        'product.buy': 'Acheter maintenant — 49,99 €'
+        'product.buy': 'Acheter maintenant — 25 €'
     },
     en: {
         'hero.title': 'Your Hot Meal, Anywhere',

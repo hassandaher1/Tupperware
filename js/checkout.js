@@ -60,7 +60,7 @@
             'checkout.shippingCost': 'Shipping',
             'checkout.shippingFree': 'Free',
             'checkout.total': 'Total',
-            'checkout.pay': 'Pay €49.99',
+            'checkout.pay': 'Pay €25',
             'checkout.note': 'No charge will be made. This page is a demo.'
         }
     };
