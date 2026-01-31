@@ -65,7 +65,10 @@ const translations = {
         'nav.benefits': 'Bénéfices',
         'nav.product': 'Produit',
         'nav.technology': 'Technologie',
-        'nav.contact': 'Contact'
+        'nav.contact': 'Contact',
+        'nav.buy': 'Acheter',
+        'hero.buy': 'Acheter le produit',
+        'product.buy': 'Acheter maintenant — 49,99 €'
     },
     en: {
         'hero.title': 'Your Hot Meal, Anywhere',
@@ -122,7 +125,10 @@ const translations = {
         'nav.benefits': 'Benefits',
         'nav.product': 'Product',
         'nav.technology': 'Technology',
-        'nav.contact': 'Contact'
+        'nav.contact': 'Contact',
+        'nav.buy': 'Buy',
+        'hero.buy': 'Buy the product',
+        'product.buy': 'Buy now — €25'
     }
 };
 
@@ -497,35 +503,24 @@ function createSmallViewer(canvasId, type) {
     sAnimate();
 }
 
-// Premium Navigation System
+// Premium Navigation System - menu toujours fixé en haut
 function initPremiumNavigation() {
     const nav = document.getElementById('premium-nav');
     const langSwitcher = document.querySelector('.language-switcher');
-    let lastScroll = 0;
     let ticking = false;
 
-    // Show/hide nav on scroll with smooth animation
     function handleScroll() {
         const currentScroll = window.pageYOffset;
         
         if (!ticking) {
             window.requestAnimationFrame(() => {
-                if (currentScroll > 100) {
-                    nav.classList.add('visible', 'scrolled');
+                if (currentScroll > 80) {
+                    nav.classList.add('scrolled');
                     if (langSwitcher) langSwitcher.classList.add('hidden');
                 } else {
-                    nav.classList.remove('visible', 'scrolled');
+                    nav.classList.remove('scrolled');
                     if (langSwitcher) langSwitcher.classList.remove('hidden');
                 }
-                
-                // Hide nav when scrolling down, show when scrolling up
-                if (currentScroll > lastScroll && currentScroll > 200) {
-                    nav.style.transform = 'translateY(-100%)';
-                } else {
-                    nav.style.transform = 'translateY(0)';
-                }
-                
-                lastScroll = currentScroll;
                 ticking = false;
             });
             ticking = true;

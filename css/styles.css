@@ -37,7 +37,7 @@ section {
     scroll-margin-top: 100px;
 }
 
-/* Premium Navigation */
+/* Premium Navigation - toujours visible et fixée en haut */
 .premium-nav {
     position: fixed;
     top: 0;
@@ -47,14 +47,7 @@ section {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(-100%);
-    opacity: 0;
-}
-
-.premium-nav.visible {
-    transform: translateY(0);
-    opacity: 1;
+    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .premium-nav.scrolled {
@@ -256,6 +249,14 @@ section {
     line-height: 1.6;
 }
 
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-top: var(--spacing-sm);
+}
+
 .hero-btn {
     padding: 20px 50px;
     font-size: 0.85rem;
@@ -269,6 +270,8 @@ section {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-family: 'Work Sans', sans-serif;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .hero-btn:hover {
@@ -280,6 +283,17 @@ section {
 
 .hero-btn:active {
     transform: translateY(0);
+}
+
+.hero-btn-buy {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-white);
+}
+
+.hero-btn-buy:hover {
+    background: transparent;
+    color: var(--color-accent);
 }
 
 /* Scroll Indicator */
@@ -490,6 +504,39 @@ section {
     color: var(--color-primary);
     font-weight: 400;
     font-family: 'Cormorant Garamond', serif;
+}
+
+.product-buy-btn {
+    display: inline-block;
+    margin-top: var(--spacing-md);
+    padding: 16px 32px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: 1px solid var(--color-accent);
+    border-radius: 2px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-buy-btn:hover {
+    background: transparent;
+    color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201, 169, 97, 0.2);
+}
+
+.nav-buy-link {
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+.nav-buy-link::after {
+    background: var(--color-accent);
 }
 
 .product-3d-viewer {

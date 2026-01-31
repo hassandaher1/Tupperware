@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande confirmée — Tupperware Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body class="success-page">
+    <nav class="premium-nav premium-nav-checkout">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Tupperware</a>
+            <a href="index.html" class="checkout-back" data-i18n="success.back">← Retour à l'accueil</a>
+        </div>
+    </nav>
+
+    <main class="success-main">
+        <div class="success-card">
+            <div class="success-icon" aria-hidden="true">✓</div>
+            <h1 class="success-title" data-i18n="success.title">Commande confirmée</h1>
+            <p class="success-message" data-i18n="success.message">Merci pour votre achat. Vous recevrez un email de confirmation sous peu.</p>
+            <p class="success-order-id">
+                <span data-i18n="success.orderId">N° de commande :</span>
+                <strong id="order-id">—</strong>
+            </p>
+            <div class="success-summary" id="success-summary">
+                <p class="success-summary-line" data-i18n="success.summaryLine">Tupperware HeatBox — 25 €</p>
+            </div>
+            <a href="index.html" class="success-btn" data-i18n="success.continue">Continuer mes achats</a>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            var orderId = params.get('order') || 'TW-' + Math.random().toString(36).slice(2, 10).toUpperCase();
+            var el = document.getElementById('order-id');
+            if (el) el.textContent = orderId;
+
+            var lang = (typeof localStorage !== 'undefined' && localStorage.getItem('language')) || 'fr';
+            var t = {
+                fr: { 'success.back': '← Retour à l\'accueil', 'success.title': 'Commande confirmée', 'success.message': 'Merci pour votre achat. Vous recevrez un email de confirmation sous peu.', 'success.orderId': 'N° de commande :', 'success.continue': 'Continuer mes achats', 'success.summaryLine': 'Tupperware HeatBox — 49,99 €' },
+                en: { 'success.back': '← Back to home', 'success.title': 'Order confirmed', 'success.message': 'Thank you for your purchase. You will receive a confirmation email shortly.', 'success.orderId': 'Order number:', 'success.continue': 'Continue shopping', 'success.summaryLine': 'Tupperware HeatBox — €25' }
+            };
+            var texts = t[lang] || t.fr;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (texts[key]) el.textContent = texts[key];
+            });
+        })();
+    </script>
+</body>
+
+</html>

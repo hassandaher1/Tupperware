@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande — Tupperware Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body class="checkout-page">
+    <nav class="premium-nav premium-nav-checkout">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Tupperware</a>
+            <a href="index.html" class="checkout-back" data-i18n="checkout.back">← Retour au site</a>
+        </div>
+    </nav>
+
+    <main class="checkout-main">
+        <div class="checkout-container">
+            <h1 class="checkout-title" data-i18n="checkout.title">Finaliser la commande</h1>
+
+            <form id="checkout-form" class="checkout-form" novalidate>
+                <div class="checkout-grid">
+                    <!-- Colonne gauche : livraison + paiement -->
+                    <div class="checkout-column">
+                        <!-- Adresse de livraison -->
+                        <section class="checkout-section">
+                            <h2 class="checkout-section-title" data-i18n="checkout.shipping">Adresse de livraison</h2>
+                            <div class="form-row form-row-double">
+                                <div class="form-group">
+                                    <label for="firstName" data-i18n="checkout.firstName">Prénom</label>
+                                    <input type="text" id="firstName" name="firstName" required autocomplete="given-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" data-i18n="checkout.lastName">Nom</label>
+                                    <input type="text" id="lastName" name="lastName" required autocomplete="family-name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" data-i18n="checkout.email">Email</label>
+                                <input type="email" id="email" name="email" required autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-i18n="checkout.phone">Téléphone</label>
+                                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+33 6 12 34 56 78">
+                            </div>
+                            <div class="form-group">
+                                <label for="address" data-i18n="checkout.address">Adresse</label>
+                                <input type="text" id="address" name="address" required autocomplete="street-address" placeholder="123 rue Example">
+                            </div>
+                            <div class="form-row form-row-double">
+                                <div class="form-group">
+                                    <label for="postalCode" data-i18n="checkout.postalCode">Code postal</label>
+                                    <input type="text" id="postalCode" name="postalCode" required autocomplete="postal-code" pattern="[0-9\s]{4,10}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="city" data-i18n="checkout.city">Ville</label>
+                                    <input type="text" id="city" name="city" required autocomplete="address-level2">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="country" data-i18n="checkout.country">Pays</label>
+                                <select id="country" name="country" required autocomplete="country">
+                                    <option value="">—</option>
+                                    <option value="FR" selected>France</option>
+                                    <option value="BE">Belgique</option>
+                                    <option value="CH">Suisse</option>
+                                    <option value="LU">Luxembourg</option>
+                                    <option value="CA">Canada</option>
+                                </select>
+                            </div>
+                        </section>
+
+                        <!-- Paiement -->
+                        <section class="checkout-section">
+                            <h2 class="checkout-section-title" data-i18n="checkout.payment">Paiement sécurisé</h2>
+                            <p class="checkout-secure" data-i18n="checkout.secure">Vos données sont protégées par chiffrement SSL.</p>
+                            <div class="form-group">
+                                <label for="cardName" data-i18n="checkout.cardName">Nom sur la carte</label>
+                                <input type="text" id="cardName" name="cardName" required autocomplete="cc-name" placeholder="Jean Dupont">
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber" data-i18n="checkout.cardNumber">Numéro de carte</label>
+                                <input type="text" id="cardNumber" name="cardNumber" required autocomplete="cc-number" placeholder="4242 4242 4242 4242" maxlength="19" inputmode="numeric">
+                            </div>
+                            <div class="form-row form-row-double">
+                                <div class="form-group">
+                                    <label for="cardExpiry" data-i18n="checkout.cardExpiry">Date d'expiration</label>
+                                    <input type="text" id="cardExpiry" name="cardExpiry" required placeholder="MM/AA" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardCvc" data-i18n="checkout.cardCvc">CVC</label>
+                                    <input type="text" id="cardCvc" name="cardCvc" required autocomplete="cc-csc" placeholder="123" maxlength="4" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="form-group form-group-checkbox">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms"><span data-i18n="checkout.terms">J'accepte les conditions générales de vente et la politique de confidentialité.</span></label>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Colonne droite : récapitulatif -->
+                    <aside class="checkout-sidebar">
+                        <div class="order-summary">
+                            <h2 class="order-summary-title" data-i18n="checkout.summary">Récapitulatif</h2>
+                            <div class="order-item">
+                                <div class="order-item-info">
+                                    <span class="order-item-name" data-i18n="checkout.productName">Tupperware HeatBox — Conteneur réchauffant</span>
+                                    <span class="order-item-qty" data-i18n="checkout.quantity">Quantité : 1</span>
+                                </div>
+                                <span class="order-item-price" id="order-item-price">25 €</span>
+                            </div>
+                            <div class="order-divider"></div>
+                            <div class="order-row">
+                                <span data-i18n="checkout.subtotal">Sous-total</span>
+                                <span id="order-subtotal">25 €</span>
+                            </div>
+                            <div class="order-row">
+                                <span data-i18n="checkout.shippingCost">Livraison</span>
+                                <span id="order-shipping" data-i18n="checkout.shippingFree">Offerte</span>
+                            </div>
+                            <div class="order-divider"></div>
+                            <div class="order-row order-total">
+                                <span data-i18n="checkout.total">Total</span>
+                                <span id="order-total">25 €</span>
+                            </div>
+                            <button type="submit" class="submit-order-btn" id="submit-order" data-i18n="checkout.pay">Payer 25 €</button>
+                            <p class="checkout-note" data-i18n="checkout.note">Aucun prélèvement ne sera effectué. Cette page est une démonstration.</p>
+                        </div>
+                    </aside>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/checkout.js"></script>
+</body>
+
+</html>
