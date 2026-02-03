@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commande — Tupperware Premium</title>
+    <title>Commande — Premium</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,7 +17,7 @@
 <body class="checkout-page">
     <nav class="premium-nav premium-nav-checkout">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">Tupperware</a>
+            <a href="index.html" class="nav-logo">HeatBox</a>
             <a href="index.html" class="checkout-back" data-i18n="checkout.back">← Retour au site</a>
         </div>
     </nav>
@@ -36,11 +36,13 @@
                             <div class="form-row form-row-double">
                                 <div class="form-group">
                                     <label for="firstName" data-i18n="checkout.firstName">Prénom</label>
-                                    <input type="text" id="firstName" name="firstName" required autocomplete="given-name">
+                                    <input type="text" id="firstName" name="firstName" required
+                                        autocomplete="given-name">
                                 </div>
                                 <div class="form-group">
                                     <label for="lastName" data-i18n="checkout.lastName">Nom</label>
-                                    <input type="text" id="lastName" name="lastName" required autocomplete="family-name">
+                                    <input type="text" id="lastName" name="lastName" required
+                                        autocomplete="family-name">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -49,16 +51,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone" data-i18n="checkout.phone">Téléphone</label>
-                                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+33 6 12 34 56 78">
+                                <input type="tel" id="phone" name="phone" required autocomplete="tel"
+                                    placeholder="+33 6 12 34 56 78">
                             </div>
                             <div class="form-group">
                                 <label for="address" data-i18n="checkout.address">Adresse</label>
-                                <input type="text" id="address" name="address" required autocomplete="street-address" placeholder="123 rue Example">
+                                <input type="text" id="address" name="address" required autocomplete="street-address"
+                                    placeholder="123 rue Example">
                             </div>
                             <div class="form-row form-row-double">
                                 <div class="form-group">
                                     <label for="postalCode" data-i18n="checkout.postalCode">Code postal</label>
-                                    <input type="text" id="postalCode" name="postalCode" required autocomplete="postal-code" pattern="[0-9\s]{4,10}">
+                                    <input type="text" id="postalCode" name="postalCode" required
+                                        autocomplete="postal-code" pattern="[0-9\s]{4,10}">
                                 </div>
                                 <div class="form-group">
                                     <label for="city" data-i18n="checkout.city">Ville</label>
@@ -81,28 +86,34 @@
                         <!-- Paiement -->
                         <section class="checkout-section">
                             <h2 class="checkout-section-title" data-i18n="checkout.payment">Paiement sécurisé</h2>
-                            <p class="checkout-secure" data-i18n="checkout.secure">Vos données sont protégées par chiffrement SSL.</p>
+                            <p class="checkout-secure" data-i18n="checkout.secure">Vos données sont protégées par
+                                chiffrement SSL.</p>
                             <div class="form-group">
                                 <label for="cardName" data-i18n="checkout.cardName">Nom sur la carte</label>
-                                <input type="text" id="cardName" name="cardName" required autocomplete="cc-name" placeholder="Jean Dupont">
+                                <input type="text" id="cardName" name="cardName" required autocomplete="cc-name"
+                                    placeholder="Jean Dupont">
                             </div>
                             <div class="form-group">
                                 <label for="cardNumber" data-i18n="checkout.cardNumber">Numéro de carte</label>
-                                <input type="text" id="cardNumber" name="cardNumber" required autocomplete="cc-number" placeholder="4242 4242 4242 4242" maxlength="19" inputmode="numeric">
+                                <input type="text" id="cardNumber" name="cardNumber" required autocomplete="cc-number"
+                                    placeholder="4242 4242 4242 4242" maxlength="19" inputmode="numeric">
                             </div>
                             <div class="form-row form-row-double">
                                 <div class="form-group">
                                     <label for="cardExpiry" data-i18n="checkout.cardExpiry">Date d'expiration</label>
-                                    <input type="text" id="cardExpiry" name="cardExpiry" required placeholder="MM/AA" maxlength="5">
+                                    <input type="text" id="cardExpiry" name="cardExpiry" required placeholder="MM/AA"
+                                        maxlength="5">
                                 </div>
                                 <div class="form-group">
                                     <label for="cardCvc" data-i18n="checkout.cardCvc">CVC</label>
-                                    <input type="text" id="cardCvc" name="cardCvc" required autocomplete="cc-csc" placeholder="123" maxlength="4" inputmode="numeric">
+                                    <input type="text" id="cardCvc" name="cardCvc" required autocomplete="cc-csc"
+                                        placeholder="123" maxlength="4" inputmode="numeric">
                                 </div>
                             </div>
                             <div class="form-group form-group-checkbox">
                                 <input type="checkbox" id="terms" name="terms" required>
-                                <label for="terms"><span data-i18n="checkout.terms">J'accepte les conditions générales de vente et la politique de confidentialité.</span></label>
+                                <label for="terms"><span data-i18n="checkout.terms">J'accepte les conditions générales
+                                        de vente et la politique de confidentialité.</span></label>
                             </div>
                         </section>
                     </div>
@@ -112,8 +123,9 @@
                         <div class="order-summary">
                             <h2 class="order-summary-title" data-i18n="checkout.summary">Récapitulatif</h2>
                             <div class="order-item">
-                                <div class="order-item-info">
-                                    <span class="order-item-name" data-i18n="checkout.productName">Tupperware HeatBox — Conteneur réchauffant</span>
+                            <div class="order-item-info">
+                                    <span class="order-item-name" data-i18n="checkout.productName">HeatBox —
+                                        Conteneur réchauffant</span>
                                     <span class="order-item-qty" data-i18n="checkout.quantity">Quantité : 1</span>
                                 </div>
                                 <span class="order-item-price" id="order-item-price">25 €</span>
@@ -132,8 +144,10 @@
                                 <span data-i18n="checkout.total">Total</span>
                                 <span id="order-total">25 €</span>
                             </div>
-                            <button type="submit" class="submit-order-btn" id="submit-order" data-i18n="checkout.pay">Payer 25 €</button>
-                            <p class="checkout-note" data-i18n="checkout.note">Aucun prélèvement ne sera effectué. Cette page est une démonstration.</p>
+                            <button type="submit" class="submit-order-btn" id="submit-order"
+                                data-i18n="checkout.pay">Payer 25 €</button>
+                            <p class="checkout-note" data-i18n="checkout.note">Aucun prélèvement ne sera effectué. Cette
+                                page est une démonstration.</p>
                         </div>
                     </aside>
                 </div>

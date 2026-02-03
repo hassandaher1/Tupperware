@@ -1,9 +1,7 @@
-// Three.js 3D Product Visualization - Enhanced for Premium Look
-
 let scene, camera, renderer, product;
 let isDragging = false;
 let previousMousePosition = { x: 0, y: 0 };
-let rotationSpeed = 0.005; // Slower, more elegant rotation
+let rotationSpeed = 0.005;
 let autoRotate = true;
 
 // Language System
@@ -132,31 +130,27 @@ const translations = {
     }
 };
 
-// Translation function
 function translatePage(lang) {
     currentLang = lang;
     localStorage.setItem('language', lang);
     document.documentElement.lang = lang;
-    
+
     const t = translations[lang];
-    
-    // Update all elements with data-i18n attribute
+
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key]) {
             el.textContent = t[key];
         }
     });
-    
-    // Update placeholders
+
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (t[key]) {
             el.placeholder = t[key];
         }
     });
-    
-    // Update language button
+
     const langBtn = document.getElementById('lang-btn');
     if (langBtn) {
         const langText = langBtn.querySelector('.lang-text');
@@ -166,10 +160,9 @@ function translatePage(lang) {
     }
 }
 
-// Initialize language on page load
 function initLanguage() {
     translatePage(currentLang);
-    
+
     // Language button click handler
     const langBtn = document.getElementById('lang-btn');
     if (langBtn) {
@@ -195,7 +188,7 @@ function initProductViewer() {
     camera.lookAt(0, 0, 0);
 
     // Renderer setup
-    renderer = new THREE.WebGLRenderer({ 
+    renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: true,
         alpha: true
@@ -238,7 +231,7 @@ function initProductViewer() {
     // Controls
     setupMouseControls(canvas);
     setupTouchControls(canvas);
-    
+
     // Animation loop
     animate();
 
@@ -255,7 +248,7 @@ function createRoundedRectShape(width, height, radius) {
     const shape = new THREE.Shape();
     const x = -width / 2;
     const y = -height / 2;
-    
+
     shape.moveTo(x, y + radius);
     shape.lineTo(x, y + height - radius);
     shape.quadraticCurveTo(x, y + height, x + radius, y + height);
@@ -265,7 +258,7 @@ function createRoundedRectShape(width, height, radius) {
     shape.quadraticCurveTo(x + width, y, x + width - radius, y);
     shape.lineTo(x + radius, y);
     shape.quadraticCurveTo(x, y, x, y + radius);
-    
+
     return shape;
 }
 
@@ -314,10 +307,10 @@ function createProduct() {
     };
     const bodyGeo = new THREE.ExtrudeGeometry(bodyShape, bodyExtrudeSettings);
     // Center geometry vertically
-    bodyGeo.translate(0, 0, -0.6); 
+    bodyGeo.translate(0, 0, -0.6);
     // Rotate to sit flat on XZ plane
     bodyGeo.rotateX(Math.PI / 2);
-    
+
     const body = new THREE.Mesh(bodyGeo, plasticMaterial);
     body.position.y = 0.6; // Lift up
     body.castShadow = true;
@@ -337,7 +330,7 @@ function createProduct() {
     const lidGeo = new THREE.ExtrudeGeometry(lidShape, lidSettings);
     lidGeo.translate(0, 0, -0.05);
     lidGeo.rotateX(Math.PI / 2);
-    
+
     const lid = new THREE.Mesh(lidGeo, plasticMaterial);
     lid.position.y = 1.25; // On top of body
     lid.castShadow = true;
@@ -476,19 +469,19 @@ function createSmallViewer(canvasId, type) {
 
     // Re-use shapes but simplify
     const group = new THREE.Group();
-    
+
     if (type === 'body') {
         // Just the container
         const shape = createRoundedRectShape(3.0, 2.0, 0.3);
-        const geo = new THREE.ExtrudeGeometry(shape, { depth: 1.0, bevelEnabled: true, bevelSegments: 2, bevelThickness:0.05, bevelSize:0.05, steps:1 });
-        geo.rotateX(Math.PI/2);
+        const geo = new THREE.ExtrudeGeometry(shape, { depth: 1.0, bevelEnabled: true, bevelSegments: 2, bevelThickness: 0.05, bevelSize: 0.05, steps: 1 });
+        geo.rotateX(Math.PI / 2);
         const mesh = new THREE.Mesh(geo, new THREE.MeshPhysicalMaterial({ color: 0xffffff, transmission: 0.2, roughness: 0.2 }));
         group.add(mesh);
     } else {
         // Just the base
         const shape = createRoundedRectShape(2.6, 1.6, 0.2);
-        const geo = new THREE.ExtrudeGeometry(shape, { depth: 0.3, bevelEnabled: true, bevelSegments: 2, bevelThickness:0.05, bevelSize:0.05, steps:1 });
-        geo.rotateX(Math.PI/2);
+        const geo = new THREE.ExtrudeGeometry(shape, { depth: 0.3, bevelEnabled: true, bevelSegments: 2, bevelThickness: 0.05, bevelSize: 0.05, steps: 1 });
+        geo.rotateX(Math.PI / 2);
         const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: 0x1a1a1a, roughness: 0.4 }));
         group.add(mesh);
     }
@@ -511,7 +504,7 @@ function initPremiumNavigation() {
 
     function handleScroll() {
         const currentScroll = window.pageYOffset;
-        
+
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 if (currentScroll > 80) {
@@ -535,11 +528,11 @@ function initPremiumNavigation() {
             e.preventDefault();
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const navHeight = nav.offsetHeight;
                 const targetPosition = targetSection.offsetTop - navHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -556,7 +549,7 @@ function smoothScrollTo(targetId, offset = 0) {
         const nav = document.getElementById('premium-nav');
         const navHeight = nav ? nav.offsetHeight : 0;
         const targetPosition = target.offsetTop - navHeight - offset;
-        
+
         window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
@@ -565,7 +558,7 @@ function smoothScrollTo(targetId, offset = 0) {
 }
 
 // Init on Load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initLanguage();
     initPremiumNavigation();
     initProductViewer();
@@ -583,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
         smoothScrollTo('#benefits', 20);
     });
-    
+
     // Scroll animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -604,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form handling
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Merci pour votre message. Nous vous répondrons dans les plus brefs délais.');
             contactForm.reset();
